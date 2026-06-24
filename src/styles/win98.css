@@ -1,0 +1,274 @@
+/* =====================================================================
+   win98.css — a small Windows 98 design system for the portfolio.
+   3D bevels are built from box-shadows (the classic 4-edge highlight/
+   shadow trick). Colours are driven by CSS variables so the "Appearance
+   Scheme" switcher can recolour the desktop and title bars at runtime.
+   ===================================================================== */
+
+:root {
+  /* 3D control chrome — kept constant so the bevels always read as 3D. */
+  --surface: #c0c0c0;          /* window / button face                */
+  --surface-text: #0a0a0a;     /* text on the surface                 */
+  --btn-highlight: #ffffff;    /* outer light edge                    */
+  --btn-face: #dfdfdf;         /* inner light edge                    */
+  --btn-shadow: #808080;       /* inner dark edge                     */
+  --frame: #0a0a0a;            /* outer dark edge / window frame       */
+  --field-bg: #ffffff;         /* inputs, lists, "paper"              */
+  --field-text: #0a0a0a;
+
+  /* Scheme-driven accents (overridden per appearance scheme). */
+  --desktop: #008080;          /* the desktop behind the windows       */
+  --title-from: #000080;       /* active title bar gradient start      */
+  --title-to: #1084d0;         /* active title bar gradient end        */
+  --title-text: #ffffff;
+  --accent: #000080;           /* selection / hover highlight          */
+  --accent-text: #ffffff;
+
+  /* Fonts */
+  --font-ui: Tahoma, "Segoe UI", Verdana, Geneva, sans-serif;
+  --font-pixel: "Press Start 2P", "Courier New", monospace;
+  --font-mono: "VT323", "Lucida Console", "Courier New", monospace;
+
+  --titlebar-h: 18px;
+}
+
+/* ---- Bevel recipes ------------------------------------------------- */
+.raised {
+  box-shadow:
+    inset -1px -1px 0 var(--frame),
+    inset  1px  1px 0 var(--btn-highlight),
+    inset -2px -2px 0 var(--btn-shadow),
+    inset  2px  2px 0 var(--btn-face);
+}
+.sunken {
+  box-shadow:
+    inset -1px -1px 0 var(--btn-highlight),
+    inset  1px  1px 0 var(--frame),
+    inset -2px -2px 0 var(--btn-face),
+    inset  2px  2px 0 var(--btn-shadow);
+}
+/* Thin single-line sunken, for status fields and insets. */
+.sunken-thin {
+  box-shadow:
+    inset -1px -1px 0 var(--btn-highlight),
+    inset  1px  1px 0 var(--btn-shadow);
+}
+
+/* ---- Window -------------------------------------------------------- */
+.win-window {
+  background: var(--surface);
+  color: var(--surface-text);
+  padding: 3px;
+  box-shadow:
+    inset -1px -1px 0 var(--frame),
+    inset  1px  1px 0 var(--btn-highlight),
+    inset -2px -2px 0 var(--btn-shadow),
+    inset  2px  2px 0 var(--btn-face);
+}
+
+.win-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  height: var(--titlebar-h);
+  padding: 0 2px 0 3px;
+  background: linear-gradient(90deg, var(--title-from), var(--title-to));
+  color: var(--title-text);
+  user-select: none;
+}
+.win-titlebar.inactive {
+  background: linear-gradient(90deg, #808080, #b5b5b5);
+}
+.win-titlebar-text {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-ui);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.win-titlebar-text img,
+.win-titlebar-text svg { width: 14px; height: 14px; flex: 0 0 auto; }
+
+.win-titlebar-controls { display: flex; gap: 2px; flex: 0 0 auto; }
+.win-titlebar-controls button {
+  width: 16px;
+  height: 14px;
+  min-width: 0;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-ui);
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1;
+  color: #000;
+  background: var(--surface);
+}
+.win-titlebar-controls button span { transform: translateY(-1px); pointer-events: none; }
+
+/* Optional menu bar (File / Edit / …) */
+.win-menubar {
+  display: flex;
+  gap: 2px;
+  padding: 1px 2px;
+  font-family: var(--font-ui);
+  font-size: 12px;
+}
+.win-menubar span {
+  padding: 1px 7px;
+  cursor: default;
+}
+.win-menubar span u { text-decoration: underline; }
+.win-menubar span:hover { background: var(--accent); color: var(--accent-text); }
+
+.win-body { padding: 12px; }
+
+/* ---- Buttons ------------------------------------------------------- */
+.win-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-width: 75px;
+  min-height: 25px;
+  padding: 4px 14px;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  color: var(--surface-text);
+  background: var(--surface);
+  cursor: pointer;
+  box-shadow:
+    inset -1px -1px 0 var(--frame),
+    inset  1px  1px 0 var(--btn-highlight),
+    inset -2px -2px 0 var(--btn-shadow),
+    inset  2px  2px 0 var(--btn-face);
+}
+.win-btn:focus-visible { outline: 1px dotted var(--surface-text); outline-offset: -4px; }
+.win-btn:active,
+.win-btn.is-pressed {
+  box-shadow:
+    inset -1px -1px 0 var(--btn-highlight),
+    inset  1px  1px 0 var(--frame),
+    inset -2px -2px 0 var(--btn-face),
+    inset  2px  2px 0 var(--btn-shadow);
+}
+.win-btn:active > * { transform: translate(1px, 1px); }
+.win-btn--sm { min-width: 0; min-height: 0; padding: 3px 9px; font-size: 12px; }
+
+/* ---- Fields / paper ------------------------------------------------ */
+.win-field {
+  background: var(--field-bg);
+  color: var(--field-text);
+  padding: 6px 8px;
+  box-shadow:
+    inset -1px -1px 0 var(--btn-highlight),
+    inset  1px  1px 0 var(--frame),
+    inset -2px -2px 0 var(--btn-face),
+    inset  2px  2px 0 var(--btn-shadow);
+}
+
+/* ---- Status bar ---------------------------------------------------- */
+.win-statusbar {
+  display: flex;
+  gap: 2px;
+  padding: 2px;
+  font-family: var(--font-ui);
+  font-size: 11px;
+}
+.win-statusbar .field {
+  flex: 0 0 auto;
+  padding: 2px 6px;
+  box-shadow:
+    inset -1px -1px 0 var(--btn-highlight),
+    inset  1px  1px 0 var(--btn-shadow);
+}
+.win-statusbar .field.grow { flex: 1 1 auto; }
+
+/* ---- Desktop icon (label under a tile) ----------------------------- */
+.win-desk-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 88px;
+  padding: 6px 4px;
+  text-align: center;
+  cursor: pointer;
+  color: var(--title-text);
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.6);
+  background: transparent;
+}
+.win-desk-icon .glyph {
+  width: 40px; height: 40px;
+  display: grid; place-items: center;
+  font-size: 28px; line-height: 1;
+}
+.win-desk-icon .label {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  padding: 1px 3px;
+  border: 1px dotted transparent;
+}
+.win-desk-icon:hover .label,
+.win-desk-icon:focus-visible .label {
+  background: var(--accent);
+  color: var(--accent-text);
+  border-color: #fff;
+  text-shadow: none;
+}
+
+/* ===== Animations (subtle) ========================================== */
+@keyframes win-open {
+  0%   { opacity: 0; transform: translateY(14px) scale(0.985); }
+  100% { opacity: 1; transform: translateY(0)    scale(1); }
+}
+.win-reveal { opacity: 0; }
+.win-reveal.is-visible { animation: win-open 0.45s cubic-bezier(0.2, 0.7, 0.3, 1) both; }
+
+@keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+.caret { display: inline-block; width: 0.6ch; background: currentColor; animation: blink 1s steps(1) infinite; }
+.caret::after { content: "\00a0"; }
+
+/* Marquee that respects reduced-motion */
+.marquee { overflow: hidden; white-space: nowrap; }
+.marquee > span {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 18s linear infinite;
+}
+@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+
+/* Spinning hourglass / loader dots */
+@keyframes hourglass { 0%, 49% { content: "\23F3"; } 50%, 100% { content: "\231B"; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .win-reveal, .win-reveal.is-visible { animation: none; opacity: 1; }
+  .marquee > span { animation: none; padding-left: 0; }
+  .caret { animation: none; }
+  * { scroll-behavior: auto !important; }
+}
+
+/* ===== Custom Win98 scrollbar (where supported) ===================== */
+* { scrollbar-width: auto; scrollbar-color: var(--surface) var(--btn-shadow); }
+::-webkit-scrollbar { width: 16px; height: 16px; }
+::-webkit-scrollbar-track {
+  background: #fff;
+  background-image:
+    repeating-conic-gradient(var(--btn-shadow) 0 25%, transparent 0 50%);
+  background-size: 2px 2px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--surface);
+  box-shadow:
+    inset -1px -1px 0 var(--frame),
+    inset  1px  1px 0 var(--btn-highlight),
+    inset -2px -2px 0 var(--btn-shadow),
+    inset  2px  2px 0 var(--btn-face);
+}
+::-webkit-scrollbar-corner { background: var(--surface); }

@@ -1,29 +1,35 @@
 import React from "react";
+import useReveal from "../hooks/useReveal";
+import Window from "./Window";
 
 const About = () => {
+  const [ref, visible] = useReveal();
+
   return (
-    <div name="about" className="w-full h-screen animated-bg text-gray-300">
-      <div className="flex flex-col justify-center items-center w-full h-full">
-        <div className="max-w-[1000px] w-full grid grid-cols-2 gap-8">
-          <div className="sm:text-right pb-8 pl-4">
-            <p className="text-4xl font-bold inline border-b-4 border-main-light">
-              About
-            </p>
-          </div>
-          <div></div>
-        </div>
-        <div className="max-w-[1000px] w-full grid sm:grid-cols-2 gap-8 px-4">
-          <div className="sm:text-right text-2xl font-bold">
-            <p>Hi, I'm Zakarya, nice to meet you. Feel free to look around.</p>
-          </div>
-          <div>
-            <p>
-            I'm a full-stack developer, with a focus on front-end development.
-            </p>
-          </div>
-        </div>
+    <Window
+      name="about"
+      innerRef={ref}
+      className={`win-reveal ${visible ? "is-visible" : ""}`}
+      title="About Me — Notepad"
+      icon="📝"
+      menu={["File", "Edit", "Search", "Help"]}
+      status={[{ text: "readme.txt", grow: true }, { text: "Ln 1, Col 1" }]}
+    >
+      <div className="win-field font-mono text-base sm:text-lg leading-relaxed">
+        <p className="mb-4">
+          I'm a <strong>data engineer</strong> and machine-learning practitioner who
+          builds data pipelines and intelligent systems.
+        </p>
+        <p className="mb-4">
+          Most of my research has explored <strong>self-supervised learning</strong> for
+          signal-processing problems — including epileptic-seizure detection from EEG.
+        </p>
+        <p>
+          I'm currently deepening my expertise in the <strong>Internet of Things</strong> as
+          part of a master's program at the <strong>University of Salerno</strong>.
+        </p>
       </div>
-    </div>
+    </Window>
   );
 };
 

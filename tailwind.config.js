@@ -5,11 +5,20 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "main-dark": "#0d1935",
-        "main-light": "#796eff",
+        // CSS-variable backed tokens so the appearance-scheme switcher works.
+        surface: "var(--surface)",
+        ink: "var(--surface-text)",
+        desktop: "var(--desktop)",
+        field: "var(--field-bg)",
+        "field-ink": "var(--field-text)",
+        accent: "var(--accent)",
+        "accent-ink": "var(--accent-text)",
+        "title-ink": "var(--title-text)",
       },
       fontFamily: {
-        "open-sans": ["Open Sans", "sans-serif"],
+        ui: ["Tahoma", "Segoe UI", "Verdana", "Geneva", "sans-serif"],
+        pixel: ['"Press Start 2P"', "monospace"],
+        mono: ['"VT323"', '"Courier New"', "monospace"],
       },
     },
   },
