@@ -12,14 +12,14 @@ import TemperatureControlPaper from "../assets/papers/Temperature controlled DC 
 import JavaCRUDPaper from "../assets/papers/PFE_Licence_SI_DZ.pdf";
 
 const docs = [
-  { name: "Self-Supervised Learning for Seizure Detection", kind: "Bachelor Thesis", href: SelfSupervisedThesis },
+  { name: "Self-Supervised Learning for Seizure Detection", kind: "Master's Thesis", href: SelfSupervisedThesis },
   { name: "Data-Centric Industrial Predictive Maintenance", kind: "Literature Review", href: PredictiveMaintenancePaper },
   { name: "AI-Generated Art Detection", kind: "Project Report", href: AIArtDetectionPaper },
   { name: "Smart Emergency Traffic Control", kind: "Project Report", href: TrafficControlPaper },
   { name: "IoT Security — Intrusion Detection System", kind: "Presentation", href: IntrusionDetectionPaper },
   { name: "Software Dependability — Apache Commons CLI", kind: "Project Report", href: SoftwareDependabilityPaper },
   { name: "Temperature-Controlled DC Motor", kind: "Project Report", href: TemperatureControlPaper },
-  { name: "Java CRUD Application (PFE Licence SI)", kind: "Project Report", href: JavaCRUDPaper },
+  { name: "Java CRUD Application (PFE Licence SI)", kind: "Bachelor's Project", href: JavaCRUDPaper },
 ];
 
 const Documents = () => {
