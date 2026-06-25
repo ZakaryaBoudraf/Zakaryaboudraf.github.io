@@ -31,7 +31,7 @@ const Skills = () => {
       name="skills"
       innerRef={ref}
       className={`win-reveal ${visible ? "is-visible" : ""}`}
-      title="My Computer — Skills"
+      title="My Computer - Skills"
       icon="🖥️"
       menu={["File", "Edit", "View", "Help"]}
       status={[

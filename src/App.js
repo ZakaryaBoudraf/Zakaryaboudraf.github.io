@@ -21,7 +21,7 @@ function App() {
   return (
     <ThemeProvider>
       <div className="min-h-screen" style={{ paddingBottom: "52px" }}>
-        {/* Desktop icons — only where there's gutter room (xl+) */}
+        {/* Desktop icons - only where there's gutter room (xl+) */}
         <div className="hidden xl:flex flex-col gap-1 fixed top-4 left-4 z-10">
           {deskIcons.map((d) => (
             <Link key={d.to} to={d.to} smooth duration={400} offset={-60} className="win-desk-icon" tabIndex={0}>

@@ -10,7 +10,7 @@ const About = () => {
       name="about"
       innerRef={ref}
       className={`win-reveal ${visible ? "is-visible" : ""}`}
-      title="About Me — Notepad"
+      title="About Me - Notepad"
       icon="📝"
       menu={["File", "Edit", "Search", "Help"]}
       status={[{ text: "readme.txt", grow: true }, { text: "Ln 1, Col 1" }]}
@@ -22,7 +22,7 @@ const About = () => {
         </p>
         <p className="mb-4">
           Most of my research has explored <strong>self-supervised learning</strong> for
-          signal-processing problems — including epileptic-seizure detection from EEG.
+          signal-processing problems, including epileptic-seizure detection from EEG.
         </p>
         <p>
           I'm currently deepening my expertise in the <strong>Internet of Things</strong> as

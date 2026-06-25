@@ -71,7 +71,7 @@ const projects = [
   {
     title: "Self-Supervised Seizure Detection",
     img: SelfSupervisedLearningImg,
-    desc: "Self-supervised pretraining for epileptic-seizure detection from EEG — master's thesis & publication.",
+    desc: "Self-supervised pretraining for epileptic-seizure detection from EEG. Master's thesis & publication.",
     links: [
       { label: "Thesis", href: SelfSupervisedThesis },
       { label: "Publication", href: "https://catalogue-biblio.univ-setif.dz/opac-science/index.php?lvl=author_see&id=16716" },
@@ -80,7 +80,7 @@ const projects = [
   {
     title: "Java CRUD Application",
     img: PFEImg,
-    desc: "Bachelor's final project — desktop database app with full create/read/update/delete operations.",
+    desc: "Bachelor's final project: desktop database app with full create/read/update/delete operations.",
     links: [{ label: "Report", href: JavaCRUDPaper }],
   },
   {

@@ -26,12 +26,12 @@ const Contact = () => {
       name="contact"
       innerRef={ref}
       className={`win-reveal ${visible ? "is-visible" : ""}`}
-      title="New Message — Let's Connect"
+      title="New Message - Let's Connect"
       icon="✉️"
       status={[{ text: "Online", grow: true }, { text: "1 recipient" }]}
     >
       <p className="font-ui text-sm sm:text-base mb-4">
-        Like what you see? Drop me a line — click the address to copy it.
+        Like what you see? Drop me a line. Click the address to copy it.
       </p>
 
       <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-2">

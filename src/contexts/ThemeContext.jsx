@@ -10,7 +10,7 @@ export const useTheme = () => {
   return context;
 };
 
-/* Default 3D chrome — the silver controls + black/white bevels that make
+/* Default 3D chrome - the silver controls + black/white bevels that make
    everything read as Windows 98. Schemes layer their accents on top. */
 const BASE = {
   "--surface": "#c0c0c0",
@@ -26,7 +26,7 @@ const BASE = {
 };
 
 /* Named after real Windows 98 "Appearance" schemes. Each one mainly
-   recolours the desktop, title bars and selection accent — the window
+   recolours the desktop, title bars and selection accent - the window
    chrome stays silver so everything remains crisp and readable. */
 export const themes = {
   standard: {

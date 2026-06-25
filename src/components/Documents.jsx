@@ -16,8 +16,8 @@ const docs = [
   { name: "Data-Centric Industrial Predictive Maintenance", kind: "Literature Review", href: PredictiveMaintenancePaper },
   { name: "AI-Generated Art Detection", kind: "Project Report", href: AIArtDetectionPaper },
   { name: "Smart Emergency Traffic Control", kind: "Project Report", href: TrafficControlPaper },
-  { name: "IoT Security — Intrusion Detection System", kind: "Presentation", href: IntrusionDetectionPaper },
-  { name: "Software Dependability — Apache Commons CLI", kind: "Project Report", href: SoftwareDependabilityPaper },
+  { name: "IoT Security - Intrusion Detection System", kind: "Presentation", href: IntrusionDetectionPaper },
+  { name: "Software Dependability - Apache Commons CLI", kind: "Project Report", href: SoftwareDependabilityPaper },
   { name: "Temperature-Controlled DC Motor", kind: "Project Report", href: TemperatureControlPaper },
   { name: "Java CRUD Application (PFE Licence SI)", kind: "Bachelor's Project", href: JavaCRUDPaper },
 ];
@@ -30,7 +30,7 @@ const Documents = () => {
       name="documents"
       innerRef={ref}
       className={`win-reveal ${visible ? "is-visible" : ""}`}
-      title="My Documents — Reports & Research"
+      title="My Documents - Reports & Research"
       icon="📚"
       menu={["File", "Edit", "View", "Help"]}
       status={[{ text: `${docs.length} document(s)`, grow: true }, { text: "PDF" }]}

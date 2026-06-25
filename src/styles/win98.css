@@ -1,12 +1,12 @@
 /* =====================================================================
-   win98.css — a small Windows 98 design system for the portfolio.
+   win98.css - a small Windows 98 design system for the portfolio.
    3D bevels are built from box-shadows (the classic 4-edge highlight/
    shadow trick). Colours are driven by CSS variables so the "Appearance
    Scheme" switcher can recolour the desktop and title bars at runtime.
    ===================================================================== */
 
 :root {
-  /* 3D control chrome — kept constant so the bevels always read as 3D. */
+  /* 3D control chrome - kept constant so the bevels always read as 3D. */
   --surface: #c0c0c0;          /* window / button face                */
   --surface-text: #0a0a0a;     /* text on the surface                 */
   --btn-highlight: #ffffff;    /* outer light edge                    */
