@@ -16,9 +16,10 @@ module.exports = {
         "title-ink": "var(--title-text)",
       },
       fontFamily: {
-        ui: ["Tahoma", "Segoe UI", "Verdana", "Geneva", "sans-serif"],
-        pixel: ['"Press Start 2P"', "monospace"],
-        mono: ['"VT323"', '"Courier New"', "monospace"],
+        // One typeface everywhere: MS Sans Serif (self-hosted via @font-face).
+        ui: ['"MS Sans Serif"', "Tahoma", "Segoe UI", "Geneva", "sans-serif"],
+        pixel: ['"MS Sans Serif"', "Tahoma", "Segoe UI", "Geneva", "sans-serif"],
+        mono: ['"MS Sans Serif"', "Tahoma", "Segoe UI", "Geneva", "sans-serif"],
       },
     },
   },

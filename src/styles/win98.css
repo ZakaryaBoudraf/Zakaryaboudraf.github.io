@@ -5,6 +5,22 @@
    Scheme" switcher can recolour the desktop and title bars at runtime.
    ===================================================================== */
 
+/* Self-hosted MS Sans Serif - the one typeface used everywhere. */
+@font-face {
+  font-family: "MS Sans Serif";
+  src: url("../assets/fonts/MS-Sans-Serif.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "MS Sans Serif";
+  src: url("../assets/fonts/MS-Sans-Serif-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   /* 3D control chrome - kept constant so the bevels always read as 3D. */
   --surface: #c0c0c0;          /* window / button face                */
@@ -24,10 +40,10 @@
   --accent: #000080;           /* selection / hover highlight          */
   --accent-text: #ffffff;
 
-  /* Fonts */
-  --font-ui: Tahoma, "Segoe UI", Verdana, Geneva, sans-serif;
-  --font-pixel: "Press Start 2P", "Courier New", monospace;
-  --font-mono: "VT323", "Lucida Console", "Courier New", monospace;
+  /* Fonts - one typeface everywhere: MS Sans Serif (self-hosted). */
+  --font-ui: "MS Sans Serif", Tahoma, "Segoe UI", Geneva, sans-serif;
+  --font-pixel: var(--font-ui);
+  --font-mono: var(--font-ui);
 
   --titlebar-h: 18px;
 }
