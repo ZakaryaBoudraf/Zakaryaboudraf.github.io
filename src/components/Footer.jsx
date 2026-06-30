@@ -27,7 +27,7 @@ const Footer = () => {
     <footer className="win-window">
       <div className="win-body flex flex-col sm:flex-row items-center justify-between gap-4 py-3">
         <p className="font-ui text-xs sm:text-sm">
-          Made with <span aria-hidden="true">❤️</span> &amp; <code className="font-mono">box-shadow</code> by Zakarya · {year}
+          Made with <span aria-hidden="true">❤️</span> by Zakarya · {year}
         </p>
 
         <div className="flex items-center gap-2">
