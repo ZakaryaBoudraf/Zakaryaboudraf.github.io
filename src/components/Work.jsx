@@ -55,6 +55,7 @@ const projects = [
     img: AIArtDetectionImg,
     desc: "Deep-learning CNN model that distinguishes AI-generated artwork from human-made art.",
     links: [
+      { label: "Demo", href: "https://huggingface.co/spaces/zakaryaboudraf/ai-art-detector" },
       { label: "Report", href: AIArtDetectionPaper },
       { label: "Slides", href: AIArtDetectionPresentation },
     ],
