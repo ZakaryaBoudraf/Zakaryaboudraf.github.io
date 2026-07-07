@@ -4,22 +4,15 @@ import { FaGithub, FaLinkedin, FaPalette, FaPowerOff } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 import { useTheme } from "../contexts/ThemeContext";
-import ResumePDF from "../assets/BoudrafZakaryaCV.pdf";
+import { useLanguage } from "../contexts/LanguageContext";
 
 const sections = [
-  { to: "hero", label: "Home", icon: "🏠" },
-  { to: "about", label: "About", icon: "📝" },
-  { to: "skills", label: "Skills", icon: "🖥️" },
-  { to: "work", label: "Projects", icon: "📁" },
-  { to: "documents", label: "Documents", icon: "📚" },
-  { to: "contact", label: "Contact", icon: "✉️" },
-];
-
-const externals = [
-  { label: "GitHub", href: "https://github.com/ZakaryaBoudraf", icon: <FaGithub /> },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/zakarya-boudraf-55006b240/", icon: <FaLinkedin /> },
-  { label: "E-mail", href: "mailto:zakaryaboudraf@gmail.com", icon: <HiOutlineMail /> },
-  { label: "Résumé", href: ResumePDF, icon: <BsFillPersonLinesFill /> },
+  { to: "hero", key: "hero", icon: "🏠" },
+  { to: "about", key: "about", icon: "📝" },
+  { to: "skills", key: "skills", icon: "🖥️" },
+  { to: "work", key: "work", icon: "📁" },
+  { to: "documents", key: "documents", icon: "📚" },
+  { to: "contact", key: "contact", icon: "✉️" },
 ];
 
 const Clock = () => {
@@ -46,11 +39,19 @@ const MiniFlag = () => {
 
 const Taskbar = () => {
   const { themes, currentTheme, setTheme } = useTheme();
+  const { L, lang, toggleLang, cv } = useLanguage();
   const [startOpen, setStartOpen] = useState(false);
   const [paletteOpen, setPaletteOpen] = useState(false);
   const [shutdown, setShutdown] = useState(false);
   const startRef = useRef(null);
   const paletteRef = useRef(null);
+
+  const externals = [
+    { label: "GitHub", href: "https://github.com/ZakaryaBoudraf", icon: <FaGithub /> },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/zakarya-boudraf-55006b240/", icon: <FaLinkedin /> },
+    { label: L.taskbar.email, href: "mailto:zakaryaboudraf@gmail.com", icon: <HiOutlineMail /> },
+    { label: L.taskbar.resume, href: cv, icon: <BsFillPersonLinesFill /> },
+  ];
 
   useEffect(() => {
     const onDown = (e) => {
@@ -77,13 +78,13 @@ const Taskbar = () => {
           style={{ background: "#000" }}
         >
           <p className="font-ui text-base mb-2" style={{ color: "#e8a200" }}>
-            It's now safe to turn off
+            {L.taskbar.safeOff1}
           </p>
           <p className="font-ui text-base mb-8" style={{ color: "#e8a200" }}>
-            your computer.
+            {L.taskbar.safeOff2}
           </p>
           <button type="button" className="win-btn" onClick={() => setShutdown(false)}>
-            ⏻ Power back on
+            {L.taskbar.powerOn}
           </button>
         </div>
       )}
@@ -97,7 +98,7 @@ const Taskbar = () => {
             className={`win-btn !min-w-0 !min-h-0 !py-1 !px-2 font-bold ${startOpen ? "is-pressed" : ""}`}
           >
             <MiniFlag />
-            <span className="font-ui italic">Start</span>
+            <span className="font-ui italic">{L.taskbar.start}</span>
           </button>
 
           {startOpen && (
@@ -127,7 +128,7 @@ const Taskbar = () => {
                     onClick={() => setStartOpen(false)}
                     className="flex items-center gap-3 px-3 py-1.5 font-ui text-sm cursor-pointer hover:bg-accent hover:text-accent-ink"
                   >
-                    <span aria-hidden="true">{s.icon}</span> {s.label}
+                    <span aria-hidden="true">{s.icon}</span> {L.nav[s.key]}
                   </Link>
                 ))}
                 <div style={{ borderTop: "1px solid var(--btn-shadow)", borderBottom: "1px solid var(--btn-highlight)", margin: "4px 6px" }} />
@@ -149,7 +150,7 @@ const Taskbar = () => {
                   onClick={() => { setShutdown(true); setStartOpen(false); }}
                   className="w-full flex items-center gap-3 px-3 py-1.5 font-ui text-sm hover:bg-accent hover:text-accent-ink text-left"
                 >
-                  <FaPowerOff className="w-4" /> Shut Down…
+                  <FaPowerOff className="w-4" /> {L.taskbar.shutdown}
                 </button>
               </div>
             </div>
@@ -170,18 +171,35 @@ const Taskbar = () => {
               className="win-btn !min-w-0 !min-h-0 !py-1 !px-2 !justify-start text-xs cursor-pointer"
             >
               <span aria-hidden="true">{s.icon}</span>
-              <span className="font-ui">{s.label}</span>
+              <span className="font-ui">{L.nav[s.key]}</span>
             </Link>
           ))}
         </div>
         <div className="flex-1 md:hidden" />
 
         {/* system tray */}
-        <div className="sunken-thin flex items-center gap-1 px-2 py-1" style={{ background: "var(--surface)" }}>
+        <div className="sunken-thin flex items-center gap-2 px-2 py-1" style={{ background: "var(--surface)" }}>
+          {/* language indicator, like the Win98 tray "EN" square */}
+          <button
+            type="button"
+            id="lang-toggle"
+            onClick={toggleLang}
+            title={L.taskbar.langTitle}
+            className="font-ui font-bold text-[10px] leading-none flex items-center justify-center"
+            style={{
+              width: "20px",
+              height: "16px",
+              background: "var(--accent)",
+              color: "var(--accent-text)",
+            }}
+          >
+            {lang.toUpperCase()}
+          </button>
+
           <div className="relative" ref={paletteRef}>
             <button
               type="button"
-              title="Appearance scheme"
+              title={L.taskbar.appearance}
               onClick={() => { setPaletteOpen((v) => !v); setStartOpen(false); }}
               className="flex items-center"
               style={{ lineHeight: 0 }}
@@ -190,7 +208,7 @@ const Taskbar = () => {
             </button>
             {paletteOpen && (
               <div className="absolute bottom-[28px] right-0 win-window p-2" style={{ width: "188px" }}>
-                <p className="font-ui text-xs font-bold mb-2 px-1">Appearance</p>
+                <p className="font-ui text-xs font-bold mb-2 px-1">{L.taskbar.appearance}</p>
                 <div className="grid grid-cols-4 gap-2">
                   {Object.entries(themes).map(([key, t]) => (
                     <button

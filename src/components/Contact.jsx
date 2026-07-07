@@ -4,11 +4,12 @@ import { HiOutlineMail } from "react-icons/hi";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 import useReveal from "../hooks/useReveal";
 import Window from "./Window";
-import ResumePDF from "../assets/BoudrafZakaryaCV.pdf";
+import { useLanguage } from "../contexts/LanguageContext";
 
 const Contact = () => {
   const [ref, visible] = useReveal();
   const [copied, setCopied] = useState(false);
+  const { L, cv } = useLanguage();
   const email = "zakaryaboudraf@gmail.com";
 
   const copyEmail = async () => {
@@ -26,21 +27,21 @@ const Contact = () => {
       name="contact"
       innerRef={ref}
       className={`win-reveal ${visible ? "is-visible" : ""}`}
-      title="New Message - Let's Connect"
+      title={L.contact.title}
       icon="✉️"
-      status={[{ text: "Online", grow: true }, { text: "1 recipient" }]}
+      status={[{ text: L.contact.statusOnline, grow: true }, { text: L.contact.statusRecipient }]}
     >
       <p className="font-ui text-sm sm:text-base mb-4">
-        Like what you see? Drop me a line. Click the address to copy it.
+        {L.contact.intro}
       </p>
 
       <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-2">
-        <span className="font-ui text-sm w-16" style={{ opacity: 0.7 }}>To:</span>
+        <span className="font-ui text-sm w-16" style={{ opacity: 0.7 }}>{L.contact.to}</span>
         <button
           type="button"
           onClick={copyEmail}
           className="win-field flex items-center gap-3 flex-1 text-left cursor-pointer"
-          title="Copy to clipboard"
+          title={L.contact.copyTitle}
         >
           <HiOutlineMail size={18} />
           <span className="font-mono text-base sm:text-lg break-all flex-1">{email}</span>
@@ -48,10 +49,10 @@ const Contact = () => {
         </button>
       </div>
       <p className="font-ui text-xs mb-6 h-4" style={{ color: "green" }}>
-        {copied ? "✓ Copied to clipboard!" : ""}
+        {copied ? L.contact.copied : ""}
       </p>
 
-      <p className="font-ui text-sm mb-3" style={{ opacity: 0.7 }}>Or find me on:</p>
+      <p className="font-ui text-sm mb-3" style={{ opacity: 0.7 }}>{L.contact.findMe}</p>
       <div className="flex flex-wrap gap-3">
         <a href="https://github.com/ZakaryaBoudraf" target="_blank" rel="noopener noreferrer">
           <button type="button" className="win-btn"><FaGithub /> GitHub</button>
@@ -59,8 +60,8 @@ const Contact = () => {
         <a href="https://www.linkedin.com/in/zakarya-boudraf-55006b240/" target="_blank" rel="noopener noreferrer">
           <button type="button" className="win-btn"><FaLinkedin /> LinkedIn</button>
         </a>
-        <a href={ResumePDF} target="_blank" rel="noopener noreferrer">
-          <button type="button" className="win-btn"><BsFillPersonLinesFill /> Résumé</button>
+        <a href={cv} target="_blank" rel="noopener noreferrer">
+          <button type="button" className="win-btn"><BsFillPersonLinesFill /> {L.contact.resume}</button>
         </a>
       </div>
     </Window>

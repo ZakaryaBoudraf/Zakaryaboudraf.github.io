@@ -1,6 +1,7 @@
 import React from "react";
 import useReveal from "../hooks/useReveal";
 import Window from "./Window";
+import { useLanguage } from "../contexts/LanguageContext";
 
 import SelfSupervisedThesis from "../assets/papers/Self-Supervised-Learning-Thesis.pdf";
 import PredictiveMaintenancePaper from "../assets/papers/Systematic Literature Review Data-Centric Approaches in Industrial Predictive Maintenance.pdf";
@@ -11,36 +12,39 @@ import SoftwareDependabilityPaper from "../assets/papers/Software Dependability 
 import TemperatureControlPaper from "../assets/papers/Temperature controlled DC Motor (Final).pdf";
 import JavaCRUDPaper from "../assets/papers/PFE_Licence_SI_DZ.pdf";
 
-const docs = [
-  { name: "Self-Supervised Learning for Seizure Detection", kind: "Master's Thesis", href: SelfSupervisedThesis },
-  { name: "Data-Centric Industrial Predictive Maintenance", kind: "Literature Review", href: PredictiveMaintenancePaper },
-  { name: "AI-Generated Art Detection", kind: "Project Report", href: AIArtDetectionPaper },
-  { name: "Smart Emergency Traffic Control", kind: "Project Report", href: TrafficControlPaper },
-  { name: "IoT Security - Intrusion Detection System", kind: "Presentation", href: IntrusionDetectionPaper },
-  { name: "Software Dependability - Apache Commons CLI", kind: "Project Report", href: SoftwareDependabilityPaper },
-  { name: "Temperature-Controlled DC Motor", kind: "Project Report", href: TemperatureControlPaper },
-  { name: "Java CRUD Application (PFE Licence SI)", kind: "Bachelor's Project", href: JavaCRUDPaper },
+/* Order matches documents.items in strings.js */
+const docHrefs = [
+  SelfSupervisedThesis,
+  PredictiveMaintenancePaper,
+  AIArtDetectionPaper,
+  TrafficControlPaper,
+  IntrusionDetectionPaper,
+  SoftwareDependabilityPaper,
+  TemperatureControlPaper,
+  JavaCRUDPaper,
 ];
 
 const Documents = () => {
   const [ref, visible] = useReveal();
+  const { L } = useLanguage();
+  const docs = docHrefs.map((href, i) => ({ href, ...L.documents.items[i] }));
 
   return (
     <Window
       name="documents"
       innerRef={ref}
       className={`win-reveal ${visible ? "is-visible" : ""}`}
-      title="My Documents - Reports & Research"
+      title={L.documents.title}
       icon="📚"
-      menu={["File", "Edit", "View", "Help"]}
-      status={[{ text: `${docs.length} document(s)`, grow: true }, { text: "PDF" }]}
+      menu={L.documents.menu}
+      status={[{ text: L.documents.statusCount(docs.length), grow: true }, { text: "PDF" }]}
     >
       <div className="win-field !p-0">
         {/* header row */}
         <div className="hidden sm:flex font-ui text-xs font-bold px-3 py-1.5" style={{ borderBottom: "1px solid var(--btn-shadow)" }}>
-          <span className="flex-1">Name</span>
-          <span className="w-40">Type</span>
-          <span className="w-20 text-right">Open</span>
+          <span className="flex-1">{L.documents.colName}</span>
+          <span className="w-40">{L.documents.colType}</span>
+          <span className="w-20 text-right">{L.documents.colOpen}</span>
         </div>
         {docs.map((d, i) => (
           <a
@@ -54,7 +58,7 @@ const Documents = () => {
             <span aria-hidden="true">📄</span>
             <span className="flex-1 leading-snug">{d.name}</span>
             <span className="hidden sm:block w-40 text-xs" style={{ opacity: 0.75 }}>{d.kind}</span>
-            <span className="hidden sm:block w-20 text-right text-xs underline">View →</span>
+            <span className="hidden sm:block w-20 text-right text-xs underline">{L.documents.view}</span>
           </a>
         ))}
       </div>

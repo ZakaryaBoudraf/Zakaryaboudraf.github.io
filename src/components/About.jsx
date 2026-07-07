@@ -1,32 +1,31 @@
 import React from "react";
 import useReveal from "../hooks/useReveal";
 import Window from "./Window";
+import { useLanguage } from "../contexts/LanguageContext";
 
 const About = () => {
   const [ref, visible] = useReveal();
+  const { L } = useLanguage();
 
   return (
     <Window
       name="about"
       innerRef={ref}
       className={`win-reveal ${visible ? "is-visible" : ""}`}
-      title="About Me - Notepad"
+      title={L.about.title}
       icon="📝"
-      menu={["File", "Edit", "Search", "Help"]}
-      status={[{ text: "readme.txt", grow: true }, { text: "Ln 1, Col 1" }]}
+      menu={L.about.menu}
+      status={[{ text: L.about.statusFile, grow: true }, { text: L.about.statusPos }]}
     >
       <div className="win-field font-mono text-base sm:text-lg leading-relaxed">
         <p className="mb-4">
-          I'm a <strong>data engineer</strong> and machine-learning practitioner who
-          builds data pipelines and intelligent systems.
+          {L.about.p1a}<strong>{L.about.p1b}</strong>{L.about.p1c}
         </p>
         <p className="mb-4">
-          Most of my research has explored <strong>self-supervised learning</strong> for
-          signal-processing problems, including epileptic-seizure detection from EEG.
+          {L.about.p2a}<strong>{L.about.p2b}</strong>{L.about.p2c}
         </p>
         <p>
-          I'm currently deepening my expertise in the <strong>Internet of Things</strong> as
-          part of a master's program at the <strong>University of Salerno</strong>.
+          {L.about.p3a}<strong>{L.about.p3b}</strong>{L.about.p3c}<strong>{L.about.p3d}</strong>{L.about.p3e}
         </p>
       </div>
     </Window>

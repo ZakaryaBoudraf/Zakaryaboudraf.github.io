@@ -1,6 +1,7 @@
 import React from "react";
 import useReveal from "../hooks/useReveal";
 import Window from "./Window";
+import { useLanguage } from "../contexts/LanguageContext";
 
 import ArchiDesignImg from "../assets/archi-design-screen.png";
 import PFEImg from "../assets/PFE-screen.png";
@@ -21,94 +22,35 @@ import PredictiveMaintenancePresentation from "../assets/papers/Presentation - Z
 import JavaCRUDPaper from "../assets/papers/PFE_Licence_SI_DZ.pdf";
 import SelfSupervisedThesis from "../assets/papers/Self-Supervised-Learning-Thesis.pdf";
 
-const projects = [
-  {
-    title: "Industrial Predictive Maintenance",
-    img: PredictiveMaintenanceImg,
-    desc: "Systematic literature review of ML-driven predictive maintenance on industrial sensor data.",
-    links: [
-      { label: "Report", href: PredictiveMaintenancePaper },
-      { label: "Slides", href: PredictiveMaintenancePresentation },
-    ],
-  },
-  {
-    title: "IoT Intrusion Detection",
-    img: IntrusionDetectionImg,
-    desc: "Real-time IoT security with embedded neural networks on an STM32 Nucleo-F401RE.",
-    links: [
-      { label: "Code", href: "https://github.com/ZakaryaBoudraf/Real-time-IDS-for-STM32" },
-      { label: "Slides", href: IntrusionDetectionPaper },
-    ],
-  },
-  {
-    title: "Smart Emergency Traffic Control",
-    img: TrafficControlImg,
-    desc: "Deep reinforcement learning for traffic-signal optimization across multi-intersection networks.",
-    links: [
-      { label: "Code", href: "https://github.com/ZakaryaBoudraf/Emergency-Traffic-Control" },
-      { label: "Report", href: TrafficControlPaper },
-      { label: "Slides", href: TrafficControlPresentation },
-    ],
-  },
-  {
-    title: "AI-Generated Art Detection",
-    img: AIArtDetectionImg,
-    desc: "Deep-learning CNN model that distinguishes AI-generated artwork from human-made art.",
-    links: [
-      { label: "Demo", href: "https://huggingface.co/spaces/zakaryaboudraf/ai-art-detector" },
-      { label: "Report", href: AIArtDetectionPaper },
-      { label: "Slides", href: AIArtDetectionPresentation },
-    ],
-  },
-  {
-    title: "Fire Detection & Fan Control",
-    img: FireDetectionImg,
-    desc: "IoT fire-detection system with MQTT monitoring and an automated temperature response.",
-    links: [
-      { label: "Code", href: "https://github.com/ZakaryaBoudraf/TempControlledFan" },
-      { label: "Demo", href: "https://www.tinkercad.com/things/0wApEXWgAPd-temperature-controlled-dc-motor" },
-    ],
-  },
-  {
-    title: "Self-Supervised Seizure Detection",
-    img: SelfSupervisedLearningImg,
-    desc: "Self-supervised pretraining for epileptic-seizure detection from EEG. Master's thesis & publication.",
-    links: [
-      { label: "Thesis", href: SelfSupervisedThesis },
-      { label: "Publication", href: "https://catalogue-biblio.univ-setif.dz/opac-science/index.php?lvl=author_see&id=16716" },
-    ],
-  },
-  {
-    title: "Java CRUD Application",
-    img: PFEImg,
-    desc: "Bachelor's final project: desktop database app with full create/read/update/delete operations.",
-    links: [{ label: "Report", href: JavaCRUDPaper }],
-  },
-  {
-    title: "Archi-Design Studio Site",
-    img: ArchiDesignImg,
-    desc: "Responsive architecture-studio landing site built with React.",
-    links: [
-      { label: "Demo", href: "https://archi-design.netlify.app/" },
-      { label: "Code", href: "https://github.com/ZakaryaBoudraf/archi-design" },
-    ],
-  },
+/* Images + link targets are language-independent; titles, descriptions and
+   link labels come from strings.js (same order, same link count). */
+const projectAssets = [
+  { img: PredictiveMaintenanceImg, hrefs: [PredictiveMaintenancePaper, PredictiveMaintenancePresentation] },
+  { img: IntrusionDetectionImg, hrefs: ["https://github.com/ZakaryaBoudraf/Real-time-IDS-for-STM32", IntrusionDetectionPaper] },
+  { img: TrafficControlImg, hrefs: ["https://github.com/ZakaryaBoudraf/Emergency-Traffic-Control", TrafficControlPaper, TrafficControlPresentation] },
+  { img: AIArtDetectionImg, hrefs: ["https://huggingface.co/spaces/zakaryaboudraf/ai-art-detector", AIArtDetectionPaper, AIArtDetectionPresentation] },
+  { img: FireDetectionImg, hrefs: ["https://github.com/ZakaryaBoudraf/TempControlledFan", "https://www.tinkercad.com/things/0wApEXWgAPd-temperature-controlled-dc-motor"] },
+  { img: SelfSupervisedLearningImg, hrefs: [SelfSupervisedThesis, "https://catalogue-biblio.univ-setif.dz/opac-science/index.php?lvl=author_see&id=16716"] },
+  { img: PFEImg, hrefs: [JavaCRUDPaper] },
+  { img: ArchiDesignImg, hrefs: ["https://archi-design.netlify.app/", "https://github.com/ZakaryaBoudraf/archi-design"] },
 ];
 
 const Work = () => {
   const [ref, visible] = useReveal(0.05);
+  const { L } = useLanguage();
+  const projects = projectAssets.map((p, i) => ({ ...p, ...L.work.projects[i] }));
 
   return (
     <Window
       name="work"
       innerRef={ref}
       className={`win-reveal ${visible ? "is-visible" : ""}`}
-      title="My Projects"
+      title={L.work.title}
       icon="📁"
-      menu={["File", "Edit", "View", "Go", "Help"]}
+      menu={L.work.menu}
       status={[
-        { text: `${projects.length} project(s)`, grow: true },
-        { text: "Double-click to open" },
+        { text: L.work.statusCount(projects.length), grow: true },
+        { text: L.work.statusHint },
       ]}
     >
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
@@ -122,9 +64,9 @@ const Work = () => {
               {p.desc}
             </p>
             <div className="flex flex-wrap gap-2">
-              {p.links.map((l) => (
-                <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer">
-                  <button type="button" className="win-btn win-btn--sm">{l.label}</button>
+              {p.hrefs.map((href, j) => (
+                <a key={href} href={href} target="_blank" rel="noopener noreferrer">
+                  <button type="button" className="win-btn win-btn--sm">{p.labels[j]}</button>
                 </a>
               ))}
             </div>

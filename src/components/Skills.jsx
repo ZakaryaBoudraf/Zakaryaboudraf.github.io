@@ -1,6 +1,7 @@
 import React from "react";
 import useReveal from "../hooks/useReveal";
 import Window from "./Window";
+import { useLanguage } from "../contexts/LanguageContext";
 import CSS from "../assets/css.png";
 import GitHub from "../assets/github.png";
 import HTML from "../assets/html.png";
@@ -25,18 +26,19 @@ const skills = [
 
 const Skills = () => {
   const [ref, visible] = useReveal();
+  const { L } = useLanguage();
 
   return (
     <Window
       name="skills"
       innerRef={ref}
       className={`win-reveal ${visible ? "is-visible" : ""}`}
-      title="My Computer - Skills"
+      title={L.skills.title}
       icon="🖥️"
-      menu={["File", "Edit", "View", "Help"]}
+      menu={L.skills.menu}
       status={[
-        { text: `${skills.length} object(s)`, grow: true },
-        { text: "My Computer" },
+        { text: L.skills.statusObjects(skills.length), grow: true },
+        { text: L.skills.statusPlace },
       ]}
     >
       <div className="win-field">

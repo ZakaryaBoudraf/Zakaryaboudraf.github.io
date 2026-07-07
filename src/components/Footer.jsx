@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useLanguage } from "../contexts/LanguageContext";
 
 /* A tongue-in-cheek 90s "hit counter". Seeds at a believable number and
    bumps once per browser via localStorage. */
@@ -20,6 +21,7 @@ const useHitCounter = () => {
 
 const Footer = () => {
   const count = useHitCounter();
+  const { L } = useLanguage();
   const digits = String(count).padStart(6, "0").split("");
   const year = new Date().getFullYear();
 
@@ -27,11 +29,11 @@ const Footer = () => {
     <footer className="win-window">
       <div className="win-body flex flex-col sm:flex-row items-center justify-between gap-4 py-3">
         <p className="font-ui text-xs sm:text-sm">
-          Made with <span aria-hidden="true">❤️</span> by Zakarya · {year}
+          {L.footer.madeA} <span aria-hidden="true">❤️</span> {L.footer.madeC} · {year}
         </p>
 
         <div className="flex items-center gap-2">
-          <span className="font-ui text-xs" style={{ opacity: 0.7 }}>You are visitor</span>
+          <span className="font-ui text-xs" style={{ opacity: 0.7 }}>{L.footer.visitor}</span>
           <span className="sunken inline-flex" style={{ background: "#000", padding: "3px" }}>
             {digits.map((d, i) => (
               <span
