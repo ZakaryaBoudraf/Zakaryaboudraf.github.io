@@ -3,14 +3,14 @@ import useReveal from "../hooks/useReveal";
 import Window from "./Window";
 import { useLanguage } from "../contexts/LanguageContext";
 
-import ArchiDesignImg from "../assets/archi-design-screen.png";
-import PFEImg from "../assets/PFE-screen.png";
-import SelfSupervisedLearningImg from "../assets/Self-supervised.png";
-import AIArtDetectionImg from "../assets/ai-art-detection.png";
-import FireDetectionImg from "../assets/fire-detection.png";
-import PredictiveMaintenanceImg from "../assets/predictive-maintenance.png";
-import IntrusionDetectionImg from "../assets/intrusion-detection.png";
-import TrafficControlImg from "../assets/traffic-control.png";
+import ArchiDesignImg from "../assets/gifs/archi-design.gif";
+import PFEImg from "../assets/gifs/java-crud.gif";
+import SelfSupervisedLearningImg from "../assets/gifs/seizure-detection.gif";
+import AIArtDetectionImg from "../assets/gifs/ai-art-detection.gif";
+import FireDetectionImg from "../assets/gifs/fire-detection.gif";
+import PredictiveMaintenanceImg from "../assets/gifs/predictive-maintenance.gif";
+import IntrusionDetectionImg from "../assets/gifs/intrusion-detection.gif";
+import TrafficControlImg from "../assets/gifs/traffic-control.gif";
 
 import AIArtDetectionPaper from "../assets/papers/AI-Generated Art Detection Report.pdf";
 import AIArtDetectionPresentation from "../assets/papers/presentation ai-generated art detection.pdf";
@@ -56,7 +56,7 @@ const Work = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
         {projects.map((p) => (
           <div key={p.title} className="raised bg-surface p-2 flex flex-col">
-            <div className="win-field !p-0 bg-white h-36 sm:h-40 flex items-center justify-center overflow-hidden">
+            <div className="win-field !p-0 h-36 sm:h-40 flex items-center justify-center overflow-hidden" style={{ background: "#0d1021" }}>
               <img src={p.img} alt={p.title} loading="lazy" className="w-full h-full object-contain" />
             </div>
             <h3 className="font-ui font-bold text-sm mt-3 mb-1">{p.title}</h3>
