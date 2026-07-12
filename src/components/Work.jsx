@@ -56,7 +56,7 @@ const Work = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
         {projects.map((p) => (
           <div key={p.title} className="raised bg-surface p-2 flex flex-col">
-            <div className="win-field !p-0 h-36 sm:h-40 flex items-center justify-center overflow-hidden" style={{ background: "#0d1021" }}>
+            <div className="win-field !p-[3px] h-36 sm:h-40 flex items-center justify-center overflow-hidden" style={{ background: "#0d1021" }}>
               <img src={p.img} alt={p.title} loading="lazy" className="w-full h-full object-contain" />
             </div>
             <h3 className="font-ui font-bold text-sm mt-3 mb-1">{p.title}</h3>
