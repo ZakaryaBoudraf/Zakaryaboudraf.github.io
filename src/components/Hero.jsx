@@ -28,12 +28,12 @@ const Hero = () => {
           <span className="caret" aria-hidden="true" />
         </p>
 
-        <p className="font-ui text-[11px] sm:text-xs uppercase tracking-[0.2em] mb-3" style={{ opacity: 0.75 }}>
+        <p className="font-ui font-bold text-lg sm:text-2xl md:text-3xl mb-2">
           {L.hero.kicker}
         </p>
 
-        <h1 className="font-pixel leading-[1.35] text-2xl sm:text-4xl md:text-5xl mb-5 text-accent">
-          Zakarya<br />Boudraf
+        <h1 className="font-ui font-bold leading-tight text-4xl sm:text-6xl md:text-7xl mb-5 text-accent">
+          Zakarya Boudraf
         </h1>
 
         <h2 className="font-ui font-bold text-lg sm:text-2xl md:text-3xl mb-4">
