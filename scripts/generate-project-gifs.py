@@ -356,6 +356,57 @@ def gif_archi():
         frames.append(img)
     save_gif("archi-design", frames, 120)
 
+# 9 ── VSR thesis: lips -> frozen AV-HuBERT + LoRA -> decoded text
+def gif_thesis():
+    frames = []
+    n = 26
+    text_full = "HELLO WORLD"
+    for f in range(n):
+        img, d = new_frame()
+        d.text((8, 6), "VSR - LIP READING", font=F, fill=GRAY)
+        # face
+        d.rectangle([14, 22, 58, 78], fill=(198, 156, 118))          # head
+        d.rectangle([14, 22, 58, 32], fill=(52, 40, 34))             # hair
+        d.rectangle([22, 42, 27, 46], fill=(20, 20, 30))             # eyes
+        d.rectangle([45, 42, 50, 46], fill=(20, 20, 30))
+        mouth = f % 4                                                 # viseme cycle
+        mx, my = 36, 64
+        if mouth == 0:
+            d.rectangle([mx - 7, my, mx + 7, my + 1], fill=(120, 60, 50))
+        elif mouth == 1:
+            d.rectangle([mx - 6, my - 2, mx + 6, my + 3], fill=(90, 40, 40))
+        elif mouth == 2:
+            d.rectangle([mx - 7, my - 4, mx + 7, my + 5], fill=(60, 25, 30))
+            d.rectangle([mx - 5, my - 2, mx + 5, my + 1], fill=(30, 12, 16))
+        else:
+            d.ellipse([mx - 4, my - 4, mx + 4, my + 4], fill=(60, 25, 30))
+        # video frames travelling to the model
+        for k in range(3):
+            fx = 62 + ((f * 6 + k * 12) % 36)
+            d.rectangle([fx, 44, fx + 8, 52], outline=GRAY)
+            d.point((fx + 2, 46), fill=GRAY); d.point((fx + 6, 50), fill=GRAY)
+        # frozen backbone
+        d.rectangle([98, 28, 150, 72], fill=PANEL, outline=BLUE)
+        d.text((101, 34), "AV-HuBERT", font=F, fill=WHITE)
+        cx, cy = 140, 24                                              # snowflake
+        for a in range(0, 180, 45):
+            r = math.radians(a)
+            d.line([cx - 6 * math.cos(r), cy - 6 * math.sin(r),
+                    cx + 6 * math.cos(r), cy + 6 * math.sin(r)], fill=CYAN)
+        # LoRA adapter chips plugged into the frozen block
+        for k, ax in enumerate([104, 118]):
+            d.rectangle([ax, 68, ax + 9, 76], fill=AMBER if (f + k) % 2 else GOLD)
+        d.text((132, 66), "LoRA", font=F, fill=AMBER)
+        # decoded transcript typing out
+        shown = text_full[: max(0, min(len(text_full), (f - 2) // 2))]
+        d.rectangle([8, 92, 152, 110], fill=PANEL)
+        d.text((12, 96), "> " + shown, font=F, fill=GREEN)
+        tw = d.textlength("> " + shown, font=F)
+        if f % 2:
+            d.rectangle([12 + tw + 1, 96, 12 + tw + 5, 105], fill=GREEN)
+        frames.append(img)
+    save_gif("thesis-vsr", frames, 120)
+
 gif_predictive(); gif_ids(); gif_traffic(); gif_art()
-gif_fire(); gif_eeg(); gif_crud(); gif_archi()
+gif_fire(); gif_eeg(); gif_crud(); gif_archi(); gif_thesis()
 print("DONE ->", OUT)

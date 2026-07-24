@@ -11,9 +11,11 @@ import IntrusionDetectionPaper from "../assets/papers/Presentation - IoT Securit
 import SoftwareDependabilityPaper from "../assets/papers/Software Dependability Project Report - Zakarya Boudraf - Apache Commons CLI.pdf";
 import TemperatureControlPaper from "../assets/papers/Temperature controlled DC Motor (Final).pdf";
 import JavaCRUDPaper from "../assets/papers/PFE_Licence_SI_DZ.pdf";
+import VSRThesis from "../assets/papers/VSR-PEFT-Master-Thesis.pdf";
 
 /* Order matches documents.items in strings.js */
 const docHrefs = [
+  VSRThesis,
   SelfSupervisedThesis,
   PredictiveMaintenancePaper,
   AIArtDetectionPaper,

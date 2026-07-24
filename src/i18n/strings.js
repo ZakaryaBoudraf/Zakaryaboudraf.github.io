@@ -24,7 +24,7 @@ const strings = {
       statusPos: "Ln 1, Col 1",
       p1a: "I'm a ", p1b: "data engineer", p1c: " and machine-learning practitioner who builds data pipelines and intelligent systems.",
       p2a: "Most of my research has explored ", p2b: "self-supervised learning", p2c: " for signal-processing problems, including epileptic-seizure detection from EEG.",
-      p3a: "I'm currently deepening my expertise in the ", p3b: "Internet of Things", p3c: " as part of a master's program at the ", p3d: "University of Salerno", p3e: ".",
+      p3a: "I recently earned an M.Sc. in the ", p3b: "Internet of Things", p3c: " (108/110) at the ", p3d: "University of Salerno", p3e: ", with a thesis on efficient visual speech recognition.",
     },
     skills: {
       title: "My Computer - Skills",
@@ -38,6 +38,7 @@ const strings = {
       statusCount: (n) => `${n} project(s)`,
       statusHint: "Double-click to open",
       projects: [
+        { title: "Visual Speech Recognition via PEFT", desc: "Master's thesis (108/110): visual-only lip reading with LoRA adapters on a frozen AV-HuBERT backbone, across three MuAViC languages.", labels: ["Thesis", "Slides"] },
         { title: "Industrial Predictive Maintenance", desc: "Systematic literature review of ML-driven predictive maintenance on industrial sensor data.", labels: ["Report", "Slides"] },
         { title: "IoT Intrusion Detection", desc: "Real-time IoT security with embedded neural networks on an STM32 Nucleo-F401RE.", labels: ["Code", "Slides"] },
         { title: "Smart Emergency Traffic Control", desc: "Deep reinforcement learning for traffic-signal optimization across multi-intersection networks.", labels: ["Code", "Report", "Slides"] },
@@ -55,6 +56,7 @@ const strings = {
       view: "View →",
       statusCount: (n) => `${n} document(s)`,
       items: [
+        { name: "Efficient VSR via PEFT of Frozen Backbones", kind: "Master's Thesis (IoT)" },
         { name: "Self-Supervised Learning for Seizure Detection", kind: "Master's Thesis" },
         { name: "Data-Centric Industrial Predictive Maintenance", kind: "Literature Review" },
         { name: "AI-Generated Art Detection", kind: "Project Report" },
@@ -115,7 +117,7 @@ const strings = {
       statusPos: "Riga 1, Col 1",
       p1a: "Sono un ", p1b: "data engineer", p1c: " e practitioner di machine learning: costruisco pipeline di dati e sistemi intelligenti.",
       p2a: "Gran parte della mia ricerca ha esplorato il ", p2b: "self-supervised learning", p2c: " per problemi di elaborazione dei segnali, incluso il rilevamento di crisi epilettiche da EEG.",
-      p3a: "Attualmente sto approfondendo l'", p3b: "Internet of Things", p3c: " con una laurea magistrale presso l'", p3d: "Università degli Studi di Salerno", p3e: ".",
+      p3a: "Ho recentemente conseguito la laurea magistrale in ", p3b: "Internet of Things", p3c: " (108/110) presso l'", p3d: "Università degli Studi di Salerno", p3e: ", con una tesi sul riconoscimento visivo del parlato efficiente.",
     },
     skills: {
       title: "Risorse del computer - Competenze",
@@ -129,6 +131,7 @@ const strings = {
       statusCount: (n) => `${n} progetti`,
       statusHint: "Fai doppio clic per aprire",
       projects: [
+        { title: "Riconoscimento visivo del parlato (PEFT)", desc: "Tesi magistrale (108/110): lettura labiale solo visiva con adapter LoRA su un backbone AV-HuBERT congelato, in tre lingue del corpus MuAViC.", labels: ["Tesi", "Slide"] },
         { title: "Manutenzione predittiva industriale", desc: "Revisione sistematica della letteratura sul ML per la manutenzione predittiva su dati di sensori industriali.", labels: ["Report", "Slide"] },
         { title: "Intrusion Detection IoT", desc: "Sicurezza IoT in tempo reale con reti neurali embedded su STM32 Nucleo-F401RE.", labels: ["Codice", "Slide"] },
         { title: "Controllo semaforico di emergenza", desc: "Deep reinforcement learning per l'ottimizzazione dei semafori in reti multi-incrocio.", labels: ["Codice", "Report", "Slide"] },
@@ -146,6 +149,7 @@ const strings = {
       view: "Apri →",
       statusCount: (n) => `${n} documenti`,
       items: [
+        { name: "VSR efficiente tramite PEFT di backbone congelati", kind: "Tesi magistrale (IoT)" },
         { name: "Self-Supervised Learning per il rilevamento di crisi epilettiche", kind: "Tesi magistrale" },
         { name: "Manutenzione predittiva industriale data-centric", kind: "Revisione della letteratura" },
         { name: "Rilevamento di arte generata dall'IA", kind: "Report di progetto" },

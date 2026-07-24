@@ -3,6 +3,7 @@ import useReveal from "../hooks/useReveal";
 import Window from "./Window";
 import { useLanguage } from "../contexts/LanguageContext";
 
+import ThesisVSRImg from "../assets/gifs/thesis-vsr.gif";
 import ArchiDesignImg from "../assets/gifs/archi-design.gif";
 import PFEImg from "../assets/gifs/java-crud.gif";
 import SelfSupervisedLearningImg from "../assets/gifs/seizure-detection.gif";
@@ -21,10 +22,13 @@ import PredictiveMaintenancePaper from "../assets/papers/Systematic Literature R
 import PredictiveMaintenancePresentation from "../assets/papers/Presentation - Zakarya Boudraf - International School of IoT.pdf";
 import JavaCRUDPaper from "../assets/papers/PFE_Licence_SI_DZ.pdf";
 import SelfSupervisedThesis from "../assets/papers/Self-Supervised-Learning-Thesis.pdf";
+import VSRThesis from "../assets/papers/VSR-PEFT-Master-Thesis.pdf";
+import VSRSlides from "../assets/papers/VSR-PEFT-Defense-Presentation.pdf";
 
 /* Images + link targets are language-independent; titles, descriptions and
    link labels come from strings.js (same order, same link count). */
 const projectAssets = [
+  { img: ThesisVSRImg, hrefs: [VSRThesis, VSRSlides] },
   { img: PredictiveMaintenanceImg, hrefs: [PredictiveMaintenancePaper, PredictiveMaintenancePresentation] },
   { img: IntrusionDetectionImg, hrefs: ["https://github.com/ZakaryaBoudraf/Real-time-IDS-for-STM32", IntrusionDetectionPaper] },
   { img: TrafficControlImg, hrefs: ["https://github.com/ZakaryaBoudraf/Emergency-Traffic-Control", TrafficControlPaper, TrafficControlPresentation] },
