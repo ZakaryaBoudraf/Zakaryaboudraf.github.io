@@ -39,7 +39,7 @@ const projectAssets = [
   { img: AIArtDetectionImg, hrefs: ["https://huggingface.co/spaces/zakaryaboudraf/ai-art-detector", AIArtDetectionPaper, AIArtDetectionPresentation] },
   { img: FireDetectionImg, hrefs: ["https://github.com/ZakaryaBoudraf/TempControlledFan", "https://www.tinkercad.com/things/0wApEXWgAPd-temperature-controlled-dc-motor"] },
   { img: CleaningRobotImg, hrefs: ["https://github.com/ZakaryaBoudraf/cleaningrobotpy", CleaningRobotSlides] },
-  { img: HCIHospitalImg, hrefs: [HCIHospitalSlides] },
+  { img: HCIHospitalImg, hrefs: [HCIHospitalSlides, "https://drive.google.com/file/d/1c0c832YPiEqq3EV2NM5pBtwXo9WDDVtY/view"] },
   { img: SelfSupervisedLearningImg, hrefs: [SelfSupervisedThesis, "https://catalogue-biblio.univ-setif.dz/opac-science/index.php?lvl=author_see&id=16716"] },
   { img: PFEImg, hrefs: [JavaCRUDPaper] },
   { img: ArchiDesignImg, hrefs: ["https://archi-design.netlify.app/", "https://github.com/ZakaryaBoudraf/archi-design"] },
