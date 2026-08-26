@@ -44,6 +44,18 @@ const Hero = () => {
           {L.hero.blurb} <strong>{L.hero.blurbProjects}</strong> {L.hero.blurbEnd}
         </div>
 
+        <div className="win-field max-w-[680px] mb-6 font-ui text-sm sm:text-base leading-relaxed">
+          <p className="font-bold mb-2">{L.hero.highlightsTitle}</p>
+          <ul className="flex flex-col gap-2">
+            {L.hero.highlights.map((h) => (
+              <li key={h} className="flex gap-2">
+                <span aria-hidden="true" style={{ opacity: 0.6 }}>&#9656;</span>
+                <span>{h}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
         <div className="flex flex-col sm:flex-row gap-3">
           <Link to="work" smooth duration={400} offset={-60}>
             <button type="button" className="win-btn group">

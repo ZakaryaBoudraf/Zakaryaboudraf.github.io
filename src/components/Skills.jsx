@@ -2,26 +2,25 @@ import React from "react";
 import useReveal from "../hooks/useReveal";
 import Window from "./Window";
 import { useLanguage } from "../contexts/LanguageContext";
-import CSS from "../assets/css.png";
 import GitHub from "../assets/github.png";
 import HTML from "../assets/html.png";
 import JavaScript from "../assets/javascript.png";
 import ReactImg from "../assets/react.png";
-import Tailwind from "../assets/tailwind.png";
 
+/* Ordered by what I actually work on, most central first. */
 const skills = [
-  { label: "HTML", img: HTML },
-  { label: "CSS", img: CSS },
-  { label: "JavaScript", img: JavaScript },
-  { label: "React", img: ReactImg },
-  { label: "Tailwind", img: Tailwind },
-  { label: "Git / GitHub", img: GitHub },
-  { label: "Python · Pandas · NumPy", glyph: "🐍" },
-  { label: "Java · Spring", glyph: "☕" },
-  { label: "TensorFlow · Keras · PyTorch", glyph: "🤖" },
-  { label: "Arduino · MQTT · Sensors", glyph: "🌐" },
-  { label: "STM32 · Raspberry Pi", glyph: "🔧" },
+  { label: "Python · NumPy · Pandas", glyph: "🐍" },
+  { label: "PyTorch · TensorFlow · Keras", glyph: "🤖" },
+  { label: "LoRA / PEFT · Transformers", glyph: "🧠" },
+  { label: "Embedded C · STM32 · TinyML", glyph: "🔧" },
+  { label: "Arduino · Raspberry Pi · MQTT", glyph: "🌐" },
+  { label: "Unity ML-Agents · RL", glyph: "🎮" },
   { label: "SQL · Data Pipelines", glyph: "🗄️" },
+  { label: "Git / GitHub", img: GitHub },
+  { label: "Java · Spring", glyph: "☕" },
+  { label: "React", img: ReactImg },
+  { label: "JavaScript", img: JavaScript },
+  { label: "HTML / CSS", img: HTML },
 ];
 
 const Skills = () => {
