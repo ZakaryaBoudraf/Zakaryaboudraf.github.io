@@ -12,6 +12,8 @@ import SoftwareDependabilityPaper from "../assets/papers/Software Dependability 
 import TemperatureControlPaper from "../assets/papers/Temperature controlled DC Motor (Final).pdf";
 import JavaCRUDPaper from "../assets/papers/PFE_Licence_SI_DZ.pdf";
 import VSRThesis from "../assets/papers/VSR-PEFT-Master-Thesis.pdf";
+import CleaningRobotSlides from "../assets/papers/Cleaning-Robot-TDD-Presentation.pdf";
+import HCIHospitalSlides from "../assets/papers/HCI-Smart-Hospital-Monitoring.pdf";
 
 /* Order matches documents.items in strings.js */
 const docHrefs = [
@@ -22,6 +24,8 @@ const docHrefs = [
   TrafficControlPaper,
   IntrusionDetectionPaper,
   SoftwareDependabilityPaper,
+  CleaningRobotSlides,
+  HCIHospitalSlides,
   TemperatureControlPaper,
   JavaCRUDPaper,
 ];

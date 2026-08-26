@@ -4,6 +4,8 @@ import Window from "./Window";
 import { useLanguage } from "../contexts/LanguageContext";
 
 import ThesisVSRImg from "../assets/gifs/thesis-vsr.gif";
+import CleaningRobotImg from "../assets/gifs/cleaning-robot.gif";
+import HCIHospitalImg from "../assets/gifs/hci-hospital.gif";
 import ArchiDesignImg from "../assets/gifs/archi-design.gif";
 import PFEImg from "../assets/gifs/java-crud.gif";
 import SelfSupervisedLearningImg from "../assets/gifs/seizure-detection.gif";
@@ -24,6 +26,8 @@ import JavaCRUDPaper from "../assets/papers/PFE_Licence_SI_DZ.pdf";
 import SelfSupervisedThesis from "../assets/papers/Self-Supervised-Learning-Thesis.pdf";
 import VSRThesis from "../assets/papers/VSR-PEFT-Master-Thesis.pdf";
 import VSRSlides from "../assets/papers/VSR-PEFT-Defense-Presentation.pdf";
+import CleaningRobotSlides from "../assets/papers/Cleaning-Robot-TDD-Presentation.pdf";
+import HCIHospitalSlides from "../assets/papers/HCI-Smart-Hospital-Monitoring.pdf";
 
 /* Images + link targets are language-independent; titles, descriptions and
    link labels come from strings.js (same order, same link count). */
@@ -34,6 +38,8 @@ const projectAssets = [
   { img: TrafficControlImg, hrefs: ["https://github.com/ZakaryaBoudraf/Emergency-Traffic-Control", TrafficControlPaper, TrafficControlPresentation] },
   { img: AIArtDetectionImg, hrefs: ["https://huggingface.co/spaces/zakaryaboudraf/ai-art-detector", AIArtDetectionPaper, AIArtDetectionPresentation] },
   { img: FireDetectionImg, hrefs: ["https://github.com/ZakaryaBoudraf/TempControlledFan", "https://www.tinkercad.com/things/0wApEXWgAPd-temperature-controlled-dc-motor"] },
+  { img: CleaningRobotImg, hrefs: ["https://github.com/ZakaryaBoudraf/cleaningrobotpy", CleaningRobotSlides] },
+  { img: HCIHospitalImg, hrefs: [HCIHospitalSlides] },
   { img: SelfSupervisedLearningImg, hrefs: [SelfSupervisedThesis, "https://catalogue-biblio.univ-setif.dz/opac-science/index.php?lvl=author_see&id=16716"] },
   { img: PFEImg, hrefs: [JavaCRUDPaper] },
   { img: ArchiDesignImg, hrefs: ["https://archi-design.netlify.app/", "https://github.com/ZakaryaBoudraf/archi-design"] },

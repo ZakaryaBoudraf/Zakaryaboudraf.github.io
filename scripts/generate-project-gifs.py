@@ -407,6 +407,81 @@ def gif_thesis():
         frames.append(img)
     save_gif("thesis-vsr", frames, 120)
 
+# 10 ── Cleaning robot: TDD red/green cycle drives the robot across a grid
+def gif_robot():
+    frames = []
+    n = 32
+    cells = [(28 + c * 26, 44 + r * 22) for r in range(3) for c in range(4)]
+    for f in range(n):
+        img, d = new_frame()
+        d.text((8, 6), "TDD: RED -> GREEN", font=F, fill=GRAY)
+        # test status lamp, red while writing the test, green once it passes
+        passing = (f % 8) >= 4
+        d.rectangle([120, 4, 152, 16], fill=GREEN if passing else RED)
+        d.text((124, 6), "PASS" if passing else "FAIL", font=F, fill=BG)
+        # floor grid, cells turn clean as the robot visits them
+        visited = (f * 12) // 32
+        for i, (cx, cy) in enumerate(cells):
+            done = i < visited
+            d.rectangle([cx, cy, cx + 22, cy + 18],
+                        fill=(26, 40, 32) if done else PANEL, outline=GRID)
+        # obstacle
+        ox, oy = cells[6]
+        d.rectangle([ox + 4, oy + 3, ox + 18, oy + 15], fill=RED)
+        # robot sits on the current cell
+        idx = min(visited, len(cells) - 1)
+        rx, ry = cells[idx]
+        d.rectangle([rx + 4, ry + 3, rx + 18, ry + 15], fill=CYAN)
+        d.rectangle([rx + 7, ry + 6, rx + 15, ry + 9], fill=BG)
+        # UV lamp underneath pulses while the robot is moving
+        if f % 4 < 2:
+            d.rectangle([rx + 2, ry + 16, rx + 20, ry + 18], fill=(180, 120, 255))
+        d.text((8, 100), "6 user stories", font=F, fill=GRAY)
+        d.text((92, 100), "UV: pin 7", font=F, fill=(180, 120, 255))
+        frames.append(img)
+    save_gif("cleaning-robot", frames, 120)
+
+# 11 ── HCI hospital ward: vitals scroll, alarm fires, nurse station lights up
+def gif_hospital():
+    frames = []
+    n = 30
+    ALERT = range(14, 24)
+    for f in range(n):
+        img, d = new_frame()
+        alarm = f in ALERT
+        d.text((8, 6), "WARD MONITORING", font=F, fill=GRAY)
+        # bed with patient
+        d.rectangle([10, 44, 62, 74], fill=PANEL, outline=GRAY)
+        d.rectangle([10, 40, 24, 74], fill=DGRAY)          # pillow end
+        d.ellipse([14, 46, 24, 56], fill=(198, 156, 118))  # head
+        d.rectangle([26, 52, 58, 68], fill=(120, 160, 200))# blanket
+        d.text((12, 78), "SMART BED", font=F, fill=GRAY)
+        # ECG trace scrolling on the monitor
+        d.rectangle([70, 30, 152, 70], fill=PANEL, outline=GRAY)
+        pts = []
+        for x in range(72, 151):
+            wx = (x + f * 5) % 40
+            y = 50
+            if wx == 12: y = 40
+            elif wx == 14: y = 62 if not alarm else 66
+            elif wx == 16: y = 44
+            pts.append((x, y))
+        d.line(pts, fill=RED if alarm else GREEN)
+        d.text((74, 32), "HR", font=F, fill=GRAY)
+        d.text((118, 32), "132" if alarm else "078", font=F,
+               fill=RED if alarm else GREEN)
+        # nurse station panel reacts
+        d.rectangle([70, 78, 152, 108], fill=PANEL, outline=RED if alarm else GRID)
+        d.text((74, 82), "NURSE STATION", font=F, fill=GRAY)
+        if alarm and f % 2:
+            d.rectangle([74, 94, 148, 104], fill=RED)
+            d.text((80, 95), "ALERT: BED 1", font=F, fill=BG)
+        else:
+            d.text((74, 95), "all stable", font=F, fill=GREEN)
+        frames.append(img)
+    save_gif("hci-hospital", frames, 110)
+
 gif_predictive(); gif_ids(); gif_traffic(); gif_art()
 gif_fire(); gif_eeg(); gif_crud(); gif_archi(); gif_thesis()
+gif_robot(); gif_hospital()
 print("DONE ->", OUT)
