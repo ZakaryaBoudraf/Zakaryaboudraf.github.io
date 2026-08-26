@@ -32,17 +32,17 @@ import HCIHospitalSlides from "../assets/papers/HCI-Smart-Hospital-Monitoring.pd
 /* Images + link targets are language-independent; titles, descriptions and
    link labels come from strings.js (same order, same link count). */
 const projectAssets = [
-  { img: ThesisVSRImg, hrefs: [VSRThesis, VSRSlides] },
-  { img: PredictiveMaintenanceImg, hrefs: [PredictiveMaintenancePaper, PredictiveMaintenancePresentation] },
-  { img: IntrusionDetectionImg, hrefs: ["https://github.com/ZakaryaBoudraf/Real-time-IDS-for-STM32", IntrusionDetectionPaper] },
-  { img: TrafficControlImg, hrefs: ["https://github.com/ZakaryaBoudraf/Emergency-Traffic-Control", TrafficControlPaper, TrafficControlPresentation] },
-  { img: AIArtDetectionImg, hrefs: ["https://huggingface.co/spaces/zakaryaboudraf/ai-art-detector", AIArtDetectionPaper, AIArtDetectionPresentation] },
-  { img: FireDetectionImg, hrefs: ["https://github.com/ZakaryaBoudraf/TempControlledFan", "https://www.tinkercad.com/things/0wApEXWgAPd-temperature-controlled-dc-motor"] },
-  { img: CleaningRobotImg, hrefs: ["https://github.com/ZakaryaBoudraf/cleaningrobotpy", CleaningRobotSlides] },
-  { img: HCIHospitalImg, hrefs: [HCIHospitalSlides, "https://drive.google.com/file/d/1c0c832YPiEqq3EV2NM5pBtwXo9WDDVtY/view"] },
-  { img: SelfSupervisedLearningImg, hrefs: [SelfSupervisedThesis, "https://catalogue-biblio.univ-setif.dz/opac-science/index.php?lvl=author_see&id=16716"] },
-  { img: PFEImg, hrefs: [JavaCRUDPaper] },
-  { img: ArchiDesignImg, hrefs: ["https://archi-design.netlify.app/", "https://github.com/ZakaryaBoudraf/archi-design"] },
+  { year: "2026", img: ThesisVSRImg, hrefs: [VSRThesis, VSRSlides] },
+  { year: "2026", img: IntrusionDetectionImg, hrefs: ["https://github.com/ZakaryaBoudraf/Real-time-IDS-for-STM32", IntrusionDetectionPaper] },
+  { year: "2026", img: TrafficControlImg, hrefs: ["https://github.com/ZakaryaBoudraf/Emergency-Traffic-Control", TrafficControlPaper, TrafficControlPresentation] },
+  { year: "2025", img: HCIHospitalImg, hrefs: [HCIHospitalSlides, "https://drive.google.com/file/d/1c0c832YPiEqq3EV2NM5pBtwXo9WDDVtY/view"] },
+  { year: "2025", img: PredictiveMaintenanceImg, hrefs: [PredictiveMaintenancePaper, PredictiveMaintenancePresentation] },
+  { year: "2024", img: CleaningRobotImg, hrefs: ["https://github.com/ZakaryaBoudraf/cleaningrobotpy", CleaningRobotSlides] },
+  { year: "2024", img: AIArtDetectionImg, hrefs: ["https://huggingface.co/spaces/zakaryaboudraf/ai-art-detector", AIArtDetectionPaper, AIArtDetectionPresentation] },
+  { year: "2024", img: FireDetectionImg, hrefs: ["https://github.com/ZakaryaBoudraf/TempControlledFan", "https://www.tinkercad.com/things/0wApEXWgAPd-temperature-controlled-dc-motor"] },
+  { year: "2023", img: SelfSupervisedLearningImg, hrefs: [SelfSupervisedThesis, "https://catalogue-biblio.univ-setif.dz/opac-science/index.php?lvl=author_see&id=16716"] },
+  { year: "2021", img: PFEImg, hrefs: [JavaCRUDPaper] },
+  { year: "2019", img: ArchiDesignImg, hrefs: ["https://archi-design.netlify.app/", "https://github.com/ZakaryaBoudraf/archi-design"] },
 ];
 
 const Work = () => {
@@ -73,12 +73,15 @@ const Work = () => {
             <p className="font-ui text-xs leading-snug mb-3 flex-1" style={{ opacity: 0.85 }}>
               {p.desc}
             </p>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               {p.hrefs.map((href, j) => (
                 <a key={href} href={href} target="_blank" rel="noopener noreferrer">
                   <button type="button" className="win-btn win-btn--sm">{p.labels[j]}</button>
                 </a>
               ))}
+              <span className="ml-auto pl-2 font-ui text-xs tabular-nums" style={{ opacity: 0.55 }}>
+                {p.year}
+              </span>
             </div>
           </div>
         ))}
